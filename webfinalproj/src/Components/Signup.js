@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 function SignUpForm() {
   const [formData, setFormData] = useState({
     fullName: '',
+    role: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -74,6 +75,42 @@ function SignUpForm() {
     transition: 'background-color 0.3s',
     marginTop: '1rem', // Add space before the button
   };
+
+
+
+  //api test
+
+  const signup = async () => {
+    const email = formData.email;
+    const password = formData.password;
+    const fullName=formData.fullName;
+    const role="artist"
+
+    try {
+      const response = await fetch('http://localhost:3000/user/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify( {fullName,role,email,password} ),
+      });
+
+      const data = await response.json();
+      if (response.ok) {
+        alert(data.message);
+      //  navigate('/home');
+      } else {
+        alert(`SignUp failed: ${data.message}`);
+      }
+    } catch (error) {
+      console.error('Error during signUp:', error);
+      alert('An error occurred during signUp.');
+    }
+  };
+
+
+
+  ////
   return (
     <div style={containerStyle}>
     
@@ -119,7 +156,7 @@ function SignUpForm() {
             onChange={handleChange}
           />
         </div>
-        <button type="submit" style={buttonStyle}>Create new account</button>
+        <button type="submit" onClick={signup} style={buttonStyle}>Create new account</button>
       </form>
     </div>
   );
