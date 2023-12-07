@@ -225,12 +225,9 @@ const handleOntTest = (result) => {
 };
 
 return (
-  <div>
-<Navbar />
- 
+  <div> 
   <div className="profile-page">
-   <Navbar  />
-
+  <Navbar userImg={artistProfile.profileImage} />
       
           <div className="profile-header">
         {/* Conditional rendering for Cover Photo Upload */}
