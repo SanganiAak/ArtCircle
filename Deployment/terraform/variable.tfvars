@@ -1,0 +1,16 @@
+vpc_name               = "firstvpc"
+project_id             = "csye6225-414400"
+var_count              = 1
+app_name               = "webapp"
+database               = "db"
+route_next_hop_gateway = "default-internet-gateway"
+route_dest_range       = "0.0.0.0/0"
+routing_mode           = "REGIONAL"
+subnet_ip              = "192.168"
+machine_image          = "packer-1715844970"
+size                   = 100
+ip_cidr_range_db       = "192.168.2.0/24"
+ip_cidr_range_webapp   = "192.168.1.0/24"
+machine_type           = "e2-medium"
+zone                   = "us-east1-b"
+webapp_port            = 30
