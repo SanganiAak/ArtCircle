@@ -18,7 +18,6 @@ const ip_address = process.env.PUBLIC_IP_ADDRESS;
 
 if (!ip_address) {
   console.error("ALLOWED_ORIGINS environment variable is not set.");
-  process.exit(1); // Exit the script with an error code
 }
 
 // Construct the allowedOrigins array with the interpolated IP address
@@ -32,7 +31,10 @@ const allowedOrigins = [
   "http://localhost:3000/email",
   `http://${ip_address}`,
   `http://${ip_address}:3000`,
-  `http://${ip_address}:3001`
+  `http://${ip_address}:3001`,
+  "http://sangani.lol:3001",
+  "http://sangani.lol:3000",
+  "http://sangani.lol:3000/email",
 ];
 
 const User = require('./api/models/userModel');
