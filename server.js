@@ -12,9 +12,28 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 const postRouter = require('./api/routes/postRouter');
 const jobsRouter = require('./api/routes/jobsRouter');
+require('dotenv').config();
 
+const ip_address = process.env.PUBLIC_IP_ADDRESS;
 
-const allowedOrigins = ["https://talent-palette-ba48afc325ca.herokuapp.com","http://34.171.206.155","ws://34.171.206.155:3001/ws","http://localhost:3000/user/abc@northeastern.edu","http://localhost:3001", "http://localhost:3000","http://localhost:3000/email","34.171.206.155","http://34.171.206.155:3000","http://34.171.206.155:3001"]; // Add your actual domain here
+if (!ip_address) {
+  console.error("ALLOWED_ORIGINS environment variable is not set.");
+  process.exit(1); // Exit the script with an error code
+}
+
+// Construct the allowedOrigins array with the interpolated IP address
+const allowedOrigins = [
+  `https://${ip_address}`,
+  `http://${ip_address}`,
+  `ws://${ip_address}:3001/ws`,
+  "http://localhost:3000/user/abc@northeastern.edu",
+  "http://localhost:3001",
+  "http://localhost:3000",
+  "http://localhost:3000/email",
+  `http://${ip_address}`,
+  `http://${ip_address}:3000`,
+  `http://${ip_address}:3001`
+];
 
 const User = require('./api/models/userModel');
 const applicationRouter = require("./api/routes/applicationRouter");
