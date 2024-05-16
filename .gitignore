@@ -32,3 +32,9 @@ yarn-error.log*
 
 package-lock.json
 package.json
+
+
+*/.terraform/
+*/.terraform.lock.hcl
+*terraform.tfstate*
+*/variable.tfvars
