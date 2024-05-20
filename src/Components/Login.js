@@ -15,7 +15,7 @@ function Login() {
     if(suc)
     toast.success(message, {
       position: 'bottom-right',
-      autoClose: 3000, // Close the toast after 3 seconds
+      autoClose: false, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -25,7 +25,7 @@ function Login() {
     else
     toast.error(message, {
       position: 'bottom-right',
-      autoClose: 3000, // Close the toast after 3 seconds
+      autoClose: false, 
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
